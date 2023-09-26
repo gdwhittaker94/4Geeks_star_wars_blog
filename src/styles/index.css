@@ -1,3 +1,94 @@
-/* 
-    General Styles
-*/
+/* CSS NORMALISATION */
+*,
+body,
+*::before,
+*::after {
+padding: 0;
+margin: 0;
+border: 0;
+/*Remove the margin, padding and border of all elements (all browsers)*/
+box-sizing: border-box;
+/*The full area/size of an element`s box is measured by its total height and width, not just the content section. The different box sections adjust to the defined box size */
+}
+
+img {
+border-style: none;
+/*Remove the border on images inside links (IE10)*/
+max-inline-size: 100%;
+/*Make image responsive but without allowing it to outgrow its original size*/
+display: block;
+/*Removes the small gap that appears under images */
+}
+
+a,
+li,
+:link,
+:visited {
+text-decoration: none;
+/*Remove default link underline styling*/
+}
+
+ul,
+ol {
+list-style: none;
+/*List markers are not commonly needed*/
+}
+
+button {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    /* Change the font styles (all browsers)*/
+    margin: 0;
+    /* Remove the margin (Firefox, Safari) */
+    text-transform: none;
+    /*Remove the inheritance of text transform (Edge, Firefox, IE)*/
+    -webkit-appearance: button;
+    appearance: button;
+    /*Correct the inability to style clickable types (IOS, Safari)*/
+}
+
+button:hover,
+input[type="submit"] {
+cursor: pointer;
+transform: translateY(-0.15rem);
+/*Buttons on hover use the pointer cursor and have a small animation*/
+}
+
+[type="button"],
+[type="reset"],
+[type="submit"] {
+-webkit-appearance: button;
+appearance: button;
+/*Correct the inability to style clickable types (IOS, Safari)*/
+}
+/**===========================CUSTOM-STYLES==============================*/
+
+.navBar {
+    background-color: black;
+}
+
+.navBar__flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navBar__link {
+    width: max(130px, 8%);
+}
+
+.navBar__fav {
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.text-size {
+    font-size: 1.6rem;
+}

@@ -1,6 +1,23 @@
+import React from 'react'
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+
+			//////////// MY STORE/STATE ///////////
+			characters: [],
+			characterUrl: "",
+			characterDetails: {},
+
+			vehicles: [],
+			vehicleUrl: "",
+			vehicleDetails: {},
+
+			planets: [],
+			planetUrl: "",
+			planetDetails: {},
+			
+			//////////// DEMO STORE/STATE ///////////
 			demo: [
 				{
 					title: "FIRST",
@@ -12,16 +29,69 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			], 
 		},
 		actions: {
+			//////////// MY FUNCTIONS ////////////
+			fetchStarWarsData: async () => {
+				try {
+					const mainResponse = await fetch("https://www.swapi.tech/api/");
+					const mainData = await mainResponse.json(); // gives us props of main SWAPI object with links to categories
+				
+					// ACCESSING MAIN SWAPI OBJECT DATA HOW TO
+					// mainData.result = all links
+					// mainData.result.X = individual link
+					
+					// set people data 
+					const characterResponse = await fetch(mainData.result.people); 
+					const characterData = await characterResponse.json();
+					// set vehicle data 
+					const vehicleResponse = await fetch(mainData.result.vehicles); 
+					const vehicleData = await vehicleResponse.json();
+					// set planet data 
+					const planetResponse = await fetch(mainData.result.planets); 
+					const planetData = await planetResponse.json();
+
+					// ACCESSING SPECIFIC DATA OBJECTS HOW TO 
+					// __Data.results = all results (e.g. all characters)
+					// __Data.results[0] = a specific result (e.g. Luke Skywalker)
+
+					// setStore variables all at once 
+					setStore({ 
+						characters: characterData.results,
+						vehicles: vehicleData.results, 
+						planets: planetData.results
+					});
+				} catch (error) {
+					console.error("Error in fetch call:", error);
+				}
+			},
+			setCharUrl: (url) => {
+				const actions = getActions();
+				setStore({characterUrl: url});
+				actions.fetchCharDetails();
+			},
+			fetchCharDetails: async () => {
+				const store = getStore();
+				try {
+					const charUrlResponse = await fetch(store.characterUrl);
+					const charUrlData = await charUrlResponse.json();
+					setStore({characterDetails: charUrlData.result.properties});
+				} catch (error) {
+					console.error("Error in fetch call:", error);
+				}
+				console.log(store.characterDetails)
+			},
+			
+			
+			//////////// DEMO FUNCTIONS ////////////
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
 			loadSomeData: () => {
 				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
+					fetch().then().then(data => setStore({ "characters": data.results }))
 				*/
 			},
 			changeColor: (index, color) => {
