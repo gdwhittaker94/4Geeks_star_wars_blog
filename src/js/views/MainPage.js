@@ -2,54 +2,65 @@ import React, { useState, useEffect, useContext } from "react";
 import { CharCard } from "./CharCard";
 import { VehicleCard } from "./VehicleCard";
 import { PlanetCard } from "./PlanetCard";
-// import { Video } from "./Video";
+import { FavList } from "./FavList";
 import { Context } from "../store/appContext";
+// import { Video } from "./Video";
+
 import "../../styles/index.css";
 
 /*  FLOW: 
     - *Todo: video on start - how? 
-    - fetch on start -> gets superficial card details + displays them
-    - Click character card -> sets off fetchCharDetails() 
-    - The resulting object with char details is stored in the store 'characterDetails'
-    - In detail card I display these details + photo 
-    - fetch for character's 'homeworld'
-    
-    PROBLEMS:
-    - homeworld fetch is not quite working 
-        -> happens too quickly, displays numbers, gets planet but doesn't display it
+    - Each card type in MainPage does a fetch -> gets superficial card details + displays them
+    - Click card -> sets off fetchMoreDetails() -> store info in 'moreDetails' variable
+    - Details card access those details and displays them on page + image call 
+        --> CharCard: fetch for character's 'homeworld'
+    - 'Star Wars' logo = back button. 
+    - <3 Button adds card to favourites list -> dropdown appears 
 
     TODO: 
     - Finish character detail card (everything displays correctly)
-    - Do the same for the vehicle and planet cards
+    - Now character cards are all good, do the same for the vehicle and planet cards
     - Favourites button + Favourites list 
     - Styling (all black, cards glow on hover) 
+    - Inside navbar: menu w/links to titles -> scrolls down on click 
 
     EXTRA:
+    - Extra text for detailed page (Wikipedia entry?)
     - Hyperspace video on page load (how?)
     - Music plays while viewing page --> music player (auto, can stop it)
+
+        JUANJO: 
+        - npm i react-audio-player
+        - import ReactAudioPlayer from 'react-audio-player'
+        - <ReactAudioPlayer
+        src="my_audio_file.ogg"
+        autoPlay
+        controls
+        />
+        - import audio 
+
     - Noises(?)
+    - Background parralax effect? (https://www.youtube.com/watch?v=UgIwjLg4ONk&ab_channel=Fireship)
 */
 
 export const MainPage = () => {
     const { store, actions } = useContext(Context);
 
-    // TODO: ADD HYPERSPACE VIDEO ON PAGE LOAD
-    // useEffect(() => {return <Video/>}, [])
-
                     return (
-                    <div className="d-flex flex-column">
-                        <h1>Characters</h1>
-                        <div className="d-flex overflow-scroll mb-3">
+                    <div className="main">
+                        {/* <FavList/> */}
+                        <h1 className="main__title">Characters</h1>
+                        <div className="main__row">
                             <CharCard />
                         </div>
 
-                        <h1>Vehicles</h1>
-                        <div className="d-flex overflow-scroll mb-3">
+                        <h1 className="main__title">Vehicles</h1>
+                        <div className="main__row">
                             <VehicleCard />
                         </div>
 
-                        <h1>Planets</h1>
-                        <div className="d-flex overflow-scroll mb-3">
+                        <h1 className="main__title">Planets</h1>
+                        <div className="main__row">
                             <PlanetCard />
                         </div>
                     </div>

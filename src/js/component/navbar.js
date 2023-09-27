@@ -7,14 +7,19 @@ import "../../styles/index.css";
 export const Navbar = () => {
 	return (
 		<nav className="navBar">
-			<div className="navBar__flex">
-				<Link className="navBar__link" to="/" >
+			<div className="navBar__container">
+				<Link className="navBar__img" to="/" >
 					<img src={logo} alt="Star Wars Logo" className="navbar__logo"/>
 				</Link>
-				<div className="navBar__fav">
-					Favourites List 0 ⏷
+				<div>
+
+					{/* How to link these spans to sections of the page? */}
+					<a to="#characters"><span className="navBar__pageLinks">Characters</span></a>
+					<a to="#vehicles"><span className="navBar__pageLinks">Vehicles</span></a>
+					<a to="#planets"><span className="navBar__pageLinks">Planets</span></a>
 				</div>
 			</div>
+			
 		</nav>
 	);
 };

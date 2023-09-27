@@ -3,9 +3,9 @@ import React from 'react'
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-
 			//////////// MY STORE/STATE ///////////
-			moreDetails: [],		
+			moreDetails: [],	
+			favorites: [""],	
 			//////////// DEMO STORE/STATE ///////////
 			// demo: [
 			// 	{
@@ -23,7 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			//////////// MY FUNCTIONS ////////////
 			fetchMoreDetails: async (url) => {
-				const store = getStore();
+				// const store = getStore();
 				try {
 					const urlResponse = await fetch(url);
 					const urlData = await urlResponse.json();
@@ -31,8 +31,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				} catch (error) {
 					console.error("Error in fetch call:", error);
 				}
-				console.log("FetchMoreDetails func:", store.moreDetails)
+				// console.log("FetchMoreDetails func:", store.moreDetails)
 			},
+			addToFavs: (name) => {
+				setStore({favorites: [name]});
+			}
 			
 			
 			//////////// DEMO FUNCTIONS ////////////

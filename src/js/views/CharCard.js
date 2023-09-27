@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-// REMOVE BOOTSTRAP STYLING AND MAKE CUSTOM CARD LATER
-
 export const CharCard = () => {
     const { store, actions } = useContext(Context);
     let count = 0;
@@ -28,20 +26,28 @@ export const CharCard = () => {
         characters == ""
             ? <span className="loader"></span>
             : characters.map((value, index) => (
-                <div className="card flex-shrink-0 mb-3" style={{ width: '18rem' }} key={index}>
+                <div className="card" key={index}>
                     <img
                         src={`https://starwars-visualguide.com/assets/img/characters/${count += 1}.jpg`}
                         onError={({ currentTarget }) => {
                             currentTarget.onerror = null; // prevents looping
                             currentTarget.src = "https://starwars-visualguide.com/assets/img/placeholder.jpg";
                         }}
-                        className="card-img-top" alt="..."
+                        className="card__img" alt="A Star Wars Character"
                     />
-                    <div className="card-body">
-                        <h5 className="card-title">{value.name}</h5>
-                        <p className="card-text text-size">Basic data</p>
-                        <Link to={`/CharDetailCard/${value.uid}`} className="btn btn-primary" onClick={() => actions.fetchMoreDetails(value.url)}>Go somewhere</Link>
-                        <button to="#" className="btn"><i className="fa-solid fa-heart" style={{ color: "#e84a4a" }}></i></button>
+                    <div className="card__body">
+                        <h5 className="card__title">{value.name}</h5>
+                        <div className="card__buttons"> 
+                            <Link to={`/CharDetailCard/${value.uid}`} onClick={() => actions.fetchMoreDetails(value.url)}>
+                                <button className="card__btn">
+                                    More information
+                                </button>
+                            </Link>
+                            <button to="#" className="card__heartBtn" onClick={() => actions.addToFavs(value.name)}>
+                                <span className="card__heart">❤️</span>
+                            </button>
+                        </div>
+                        
                     </div>
                 </div>
             )
