@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { Video } from "./Video";
 
 // REMOVE BOOTSTRAP STYLING AND MAKE CUSTOM CARD LATER
 
@@ -23,7 +24,7 @@ export const CharCard = () => {
                     <div className="card-body">
                         <h5 className="card-title">{value.name}</h5>
                         <p className="card-text text-size">Basic data</p>
-                        <Link to={`/CharDetailCard/${value.uid}`} className="btn btn-primary" onClick={() => actions.setCharUrl(value.url)}>Go somewhere</Link>
+                        <Link to={`/CharDetailCard/${value.uid}`} className="btn btn-primary" onClick={() => actions.fetchCharDetails(value.url)}>Go somewhere</Link>
                         <button to="#" className="btn"><i className="fa-solid fa-heart" style={{ color: "#e84a4a" }}></i></button>
                     </div>
                 </div>

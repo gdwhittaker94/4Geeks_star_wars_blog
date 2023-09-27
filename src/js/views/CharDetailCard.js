@@ -5,60 +5,54 @@ import { Context } from '../store/appContext';
 export const CharDetailCard = () => {
     const { store, actions } = useContext(Context);
     const {id} = useParams(); // = index of clicked card
+    const [homeworld, setHomeworld] = useState("");
+
+    /*
+    Problem: fetchHomeworld is working but NOT working
+    -> gets homeworld, but:
+    1) doesn't wait 5000 seconds
+    2) doesn't show value where I expect to see it  
+
+    - need to use useEffect? -> tends to give me error messages
+    */
+
+    const fetchHomeworld = async (url) => {
+        try {
+            const response = await fetch(url);
+                                                                console.log("response", response)
+            const data = await response.json(); 
+                                                                onsole.log("data:", data)
+            const homeworldData = data.result.properties.name;
+                                                                console.log("homeworldData:", homeworldData)
+            setHomeworld(homeworldData);
+                                                                console.log("homeworld var:", homeworld);
+        } catch (error) {
+            console.error("Error in fetch call:", error);
+        }
+            return homeworld;
+        }
 
     return (
-        <>
-            <h1>{id}</h1> 
-            <p>{store.characterDetails.name}</p>
-            <img 
-                    src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} 
-                    onError={({ currentTarget }) => {
-                        currentTarget.onerror = null; // prevents looping
-                        currentTarget.src="https://starwars-visualguide.com/assets/img/placeholder.jpg";
-                      }}
-                    className="card-img-top" alt="..." 
-            />
-        </>
-        
+            <>
+                <h1>{id}</h1> 
+                <p>Name: {store.characterDetails.name == ""? "Loading" : store.characterDetails.name}</p>
+                <p>Gender: {store.characterDetails.gender}</p>
+                <p>Birth Year: {store.characterDetails.birth_year}</p>
+                <p>Height: {store.characterDetails.height}</p>
+                <p>Hair Color: {store.characterDetails.hair_color}</p>
+                <p>Eye Color: {store.characterDetails.eye_color}</p>
+                <p>Homeworld: {setTimeout(fetchHomeworld(store.characterDetails.homeworld), 5000)}</p>
+                <img 
+                        src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`} 
+                        onError={({ currentTarget }) => {
+                            currentTarget.onerror = null; // prevents looping
+                            currentTarget.src="https://starwars-visualguide.com/assets/img/placeholder.jpg";
+                        }}
+                        className="card-img-top" alt="..." 
+                />
+            </>        
     )
-    /* Situation: 
-    - fetch on start -> superficial card details + displayed
-    - Click character card -> setCharUrl() = url with details of char
-    - Sets off fetchCharDetails() -> gets object with char details
-    - Store 'characterDetails' contains these details -> occurs after 1/2 seconds
-    - Have to wait for that data to appear before displaying it on this page
-    
-    Problem:
-    - Trying setTimeout to delay visual, nothing appearing
-    - Random number appears 
-
-
-    */
-   
+  
 }
-
-    // return (
-    //     setTimeout(() => {
-    //             <div>
-    //                 <p>1: {store.characterDetails.birth_year}</p>
-    //             </div>
-    //         }, 1500)
-    //     )
-
-    // useEffect(() => {
-    //     actions.fetchCharDetails();
-    //     console.log(store.characterDetails)
-    // }, [])
-
-    // const {details, setDetails} = useState({});
-
-    // useEffect(async() => {
-    //     const detailResponse = await fetch(store.character[id].url);
-    //     const detailData = await detailResponse.json();
-    //     const saveDetails = await setDetails(detailData.result.properties);
-    //     console.log(details);
-    // }, [])
-
-    // console.log(store.character[0].url.result.properties.height)
 
     

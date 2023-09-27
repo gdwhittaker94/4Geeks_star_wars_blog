@@ -6,15 +6,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			//////////// MY STORE/STATE ///////////
 			characters: [],
-			characterUrl: "",
 			characterDetails: {},
 
 			vehicles: [],
-			vehicleUrl: "",
 			vehicleDetails: {},
 
 			planets: [],
-			planetUrl: "",
 			planetDetails: {},
 			
 			//////////// DEMO STORE/STATE ///////////
@@ -66,21 +63,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error("Error in fetch call:", error);
 				}
 			},
-			setCharUrl: (url) => {
-				const actions = getActions();
-				setStore({characterUrl: url});
-				actions.fetchCharDetails();
-			},
-			fetchCharDetails: async () => {
+			fetchCharDetails: async (url) => {
 				const store = getStore();
 				try {
-					const charUrlResponse = await fetch(store.characterUrl);
+					const charUrlResponse = await fetch(url);
 					const charUrlData = await charUrlResponse.json();
 					setStore({characterDetails: charUrlData.result.properties});
 				} catch (error) {
 					console.error("Error in fetch call:", error);
 				}
-				console.log(store.characterDetails)
+				console.log("FetchCharDetails actions 66:", store.characterDetails)
 			},
 			
 			
