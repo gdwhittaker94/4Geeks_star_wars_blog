@@ -3,11 +3,11 @@ import { CharCard } from "./CharCard";
 import { VehicleCard } from "./VehicleCard";
 import { PlanetCard } from "./PlanetCard";
 // import { Video } from "./Video";
-// import { Context } from "../store/appContext";
+import { Context } from "../store/appContext";
 import "../../styles/index.css";
 
 /*  FLOW: 
-    - (WANT TO SHOW VIDEO ON START - how?) 
+    - *Todo: video on start - how? 
     - fetch on start -> gets superficial card details + displays them
     - Click character card -> sets off fetchCharDetails() 
     - The resulting object with char details is stored in the store 'characterDetails'
@@ -26,12 +26,13 @@ import "../../styles/index.css";
 
     EXTRA:
     - "Loading" while waiting for fetch data --> spinner? 
+        --> ternary not working "store.___" gives error
     - Hyperspace video on page load (how?)
     - Noises(?)
 */
 
 export const MainPage = () => {
-    // const { store, actions } = useContext(Context);
+    const { store, actions } = useContext(Context);
 
     // TODO: ADD HYPERSPACE VIDEO ON PAGE LOAD
     // useEffect(() => {return <Video/>}, [])
