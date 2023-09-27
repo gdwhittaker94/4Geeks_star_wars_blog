@@ -25,9 +25,8 @@ import "../../styles/index.css";
     - Styling (all black, cards glow on hover) 
 
     EXTRA:
-    - "Loading" while waiting for fetch data --> spinner? 
-        --> ternary not working "store.___" gives error
     - Hyperspace video on page load (how?)
+    - Music plays while viewing page --> music player (auto, can stop it)
     - Noises(?)
 */
 

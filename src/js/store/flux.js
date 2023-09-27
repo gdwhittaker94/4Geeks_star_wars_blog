@@ -5,15 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 
 			//////////// MY STORE/STATE ///////////
-			characters: [],
-			characterDetails: {},
-
-			vehicles: [],
-			vehicleDetails: {},
-
-			planets: [],
-			planetDetails: {},
-			
+			moreDetails: [],		
 			//////////// DEMO STORE/STATE ///////////
 			// demo: [
 			// 	{
@@ -30,49 +22,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			//////////// MY FUNCTIONS ////////////
-			fetchStarWarsData: async () => {
-				try {
-					const mainResponse = await fetch("https://www.swapi.tech/api/");
-					const mainData = await mainResponse.json(); // gives us props of main SWAPI object with links to categories
-				
-					// ACCESSING MAIN SWAPI OBJECT DATA HOW TO
-					// mainData.result = all links
-					// mainData.result.X = individual link
-					
-					// set people data 
-					const characterResponse = await fetch(mainData.result.people); 
-					const characterData = await characterResponse.json();
-					// set vehicle data 
-					const vehicleResponse = await fetch(mainData.result.vehicles); 
-					const vehicleData = await vehicleResponse.json();
-					// set planet data 
-					const planetResponse = await fetch(mainData.result.planets); 
-					const planetData = await planetResponse.json();
-
-					// ACCESSING SPECIFIC DATA OBJECTS HOW TO 
-					// __Data.results = all results (e.g. all characters)
-					// __Data.results[0] = a specific result (e.g. Luke Skywalker)
-
-					// setStore variables all at once 
-					setStore({ 
-						characters: characterData.results,
-						vehicles: vehicleData.results, 
-						planets: planetData.results
-					});
-				} catch (error) {
-					console.error("Error in fetch call:", error);
-				}
-			},
-			fetchCharDetails: async (url) => {
+			fetchMoreDetails: async (url) => {
 				const store = getStore();
 				try {
-					const charUrlResponse = await fetch(url);
-					const charUrlData = await charUrlResponse.json();
-					setStore({characterDetails: charUrlData.result.properties});
+					const urlResponse = await fetch(url);
+					const urlData = await urlResponse.json();
+					setStore({moreDetails: urlData.result.properties});
 				} catch (error) {
 					console.error("Error in fetch call:", error);
 				}
-				console.log("FetchCharDetails actions 66:", store.characterDetails)
+				console.log("FetchMoreDetails func:", store.moreDetails)
 			},
 			
 			
