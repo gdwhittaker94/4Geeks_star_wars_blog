@@ -8,6 +8,7 @@ export const CharCard = () => {
     const [characters, setCharaceters] = useState("");
     // Starts as empty string (necessary for ternary), then set as array via map()
 
+    // Each component does its own fetch call to get the relevant data for its cards
     useEffect(() => {
         // async must go INSIDE useEffect function to work
         async function fetchCharData() {
@@ -24,7 +25,7 @@ export const CharCard = () => {
 
     return (
         characters == ""
-            ? <span className="loader"></span>
+            ? <span className="loader"></span> // while waiting to receive data
             : characters.map((value, index) => (
                 <div className="card" key={index}>
                     <img
@@ -37,7 +38,7 @@ export const CharCard = () => {
                     />
                     <div className="card__body">
                         <h5 className="card__title">{value.name}</h5>
-                        <div className="card__buttons"> 
+                        <div className="card__buttons">
                             <Link to={`/CharDetailCard/${value.uid}`} onClick={() => actions.fetchMoreDetails(value.url)}>
                                 <button className="card__btn">
                                     More information
@@ -47,7 +48,7 @@ export const CharCard = () => {
                                 <span className="card__heart">❤️</span>
                             </button>
                         </div>
-                        
+
                     </div>
                 </div>
             )

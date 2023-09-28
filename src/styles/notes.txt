@@ -5,13 +5,13 @@
     - Details card access those details and displays them on page + image call 
         --> CharCard: fetch for character's 'homeworld'
     - 'Star Wars' logo = back button. 
-    - <3 Button adds card to favourites list -> dropdown appears 
+    - <3 Button adds card to favourites list -> dropdown appears on click
 
     TODO: 
-    - Finish character detail card (everything displays correctly)
-    - Now character cards are all good, do the same for the vehicle and planet cards
+    x Finish character detail card (everything displays correctly)
+    X Now character cards are all good, do the same for the vehicle and planet cards
     - Favourites button + Favourites list 
-    - Styling (all black, cards glow on hover) 
+    X Styling (all black, cards glow on hover) 
     - Inside navbar: menu w/links to titles -> scrolls down on click 
 
     EXTRA:

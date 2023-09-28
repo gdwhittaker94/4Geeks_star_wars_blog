@@ -9,6 +9,7 @@ export const PlanetCard = () => {
   const [planets, setPlanets] = useState("");
   // Starts as empty string (necessary for ternary), then set as array via map()
 
+  // Each component does its own fetch call to get the relevant data for its cards
   useEffect(() => {
     // async must go INSIDE useEffect function to work
     async function fetchPlanetsData() {
@@ -25,7 +26,7 @@ export const PlanetCard = () => {
 
   return (
     planets == ""
-        ? <span className="loader"></span>
+        ? <span className="loader"></span> // while waiting to receive data
         : planets.map((value, index) => (
             <div className="card" key={index}>
                 <img
@@ -44,8 +45,8 @@ export const PlanetCard = () => {
                                 More information
                             </button>
                         </Link>
-                        <button to="#" className="card__heartBtn">
-                            <i className="fa-solid fa-heart fa-lg card__heart"></i>
+                        <button to="#" className="card__heartBtn" onClick={() => actions.addToFavs(value.name)}>
+                            <span className="card__heart">❤️</span>
                         </button>
                     </div>
                     

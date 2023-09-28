@@ -5,7 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			//////////// MY STORE/STATE ///////////
 			moreDetails: [],	
-			favorites: [""]	
+			favorites: [""],
+			arrived: false,	
 			//////////// DEMO STORE/STATE ///////////
 			// demo: [
 			// 	{
@@ -28,6 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const urlResponse = await fetch(url);
 					const urlData = await urlResponse.json();
 					setStore({moreDetails: urlData.result.properties});
+					setStore({arrived: true})
 				} catch (error) {
 					console.error("Error in fetch call:", error);
 				}

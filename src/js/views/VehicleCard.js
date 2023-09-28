@@ -9,6 +9,7 @@ export const VehicleCard = () => {
   const [vehicles, setVehicles] = useState("");
   // Starts as empty string (necessary for ternary), then set as array via map()
 
+  // Each component does its own fetch call to get the relevant data for its cards
   useEffect(() => {
     // async must go INSIDE useEffect function to work
     async function fetchVehiclesData() {
@@ -25,7 +26,7 @@ export const VehicleCard = () => {
 
   return (
     vehicles == ""
-        ? <span className="loader"></span>
+        ? <span className="loader"></span> // while waiting to receive data
         : vehicles.map((value, index) => (
             <div className="card" key={index}>
                 <img
@@ -44,8 +45,8 @@ export const VehicleCard = () => {
                                 More information
                             </button>
                         </Link>
-                        <button to="#" className="card__heartBtn">
-                            <i className="fa-solid fa-heart fa-lg card__heart"></i>
+                        <button to="#" className="card__heartBtn" onClick={() => actions.addToFavs(value.name)}>
+                            <span className="card__heart">❤️</span>
                         </button>
                     </div>
                     
