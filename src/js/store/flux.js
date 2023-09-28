@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			//////////// MY STORE/STATE ///////////
 			moreDetails: [],	
-			favorites: [""],	
+			favorites: [""]	
 			//////////// DEMO STORE/STATE ///////////
 			// demo: [
 			// 	{
@@ -34,8 +34,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// console.log("FetchMoreDetails func:", store.moreDetails)
 			},
 			addToFavs: (name) => {
-				setStore({favorites: [name]});
-			}
+				const store = getStore();
+
+				if(store.favorites == "") {
+					let newArray = new Array(name);
+					setStore({favorites: newArray});
+					console.log("newArray:", store.favorites)
+				} else {
+					let updatedFavorites = [...store.favorites, name];
+					setStore({favorites: updatedFavorites})
+					console.log("after new array:", store.favorites)
+				}
+			},
 			
 			
 			//////////// DEMO FUNCTIONS ////////////
