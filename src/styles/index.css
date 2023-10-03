@@ -175,18 +175,19 @@ html, body {
     align-items: center; 
 }
 
-/* //////// MY CONFIG /////////// */
+/* Favourites */
 
-.navBar__favList {
+.navBar__favListPill {
     transition: all 200ms ease;
+    position: relative;
 }
 
-.navBar__favList:hover {
+.navBar__favListPill:hover {
     filter: drop-shadow(0px 0px 10px white);
     transform: scale(1.03)
 }
 
-.navBar__favListText {
+.navBar__favListPillText {
     color: #090707;
     font-size: 2rem;
     font-weight: bold;
@@ -200,46 +201,43 @@ html, body {
     line-height: 28px;
 }
 
-.navBar__favListContainer {
+.navBar__favUL {
     display: flex;
     flex-direction: column;
     background-color: #fff;
+    position: absolute;
+    left: 0px;
+    top: 39px;
+    width: max-content;
+    border-radius: 6px;
 }
 
-.navBar__favListItem {
-    font-size: 1.4rem;
+.navBar__favULItem {
+    font-size: 1.5rem;
     font-family: var(--roboto);
     display: flex;
-    justify-content: space-between;
+    padding: 4px 6px;
 }
 
-/* //////// BOOTSTRAP CONFIG /////////// */
+/* DELETE BUTTON */
+input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+} 
 
-/* .dropdown {
-    font-size: 2rem;
-    padding: 5px;
-    border-radius: 10px;
+label {
+    margin-right: 10px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    
 }
 
-.dropdown-toggle {
-    padding: 5px;
-    border-radius: 10px;
+label:hover {
+    color: red;
 }
 
-.dropdown-menu {
-    background: white;
-    display: flex;
-    flex-direction: column;
-}
-
-.dropdown-item {
-    font-size: 2rem; 
-}
-*/
-/* /////////////// */
-
-
-/* /////////////////////// */
+/* Page Links */
 
 .navBar__pageLinksContainer {
     display: flex;
@@ -274,6 +272,14 @@ html, body {
 	transform-origin: bottom left;
 }
     
+/* ------- VIDEO -------- */
+
+.video {
+    height: 300px;
+    width: 300px;
+    background-color: white;
+}
+
 /* ------- MAIN PAGE -------- */
 
 .main {
@@ -440,6 +446,10 @@ html, body {
 /* ------- MEDIA QUERIES ------- */
 
 @media (max-width: 450px) {
+
+    .navBar {
+        padding: 10px 10px;
+    }
 
     .navBar__favList p {
         font-size: 1.5rem;

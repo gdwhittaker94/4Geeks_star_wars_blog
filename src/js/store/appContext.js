@@ -23,7 +23,7 @@ const injectContext = PassedComponent => {
 		);        
 
 		useEffect(() => {	
-			
+
 			/* equivalent to "window.onLoad" */
 		}, []);
 

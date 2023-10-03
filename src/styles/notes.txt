@@ -3,19 +3,14 @@
     - Each card type in MainPage does a fetch -> gets superficial card details + displays them
     - Click card -> sets off fetchMoreDetails() -> store info in 'moreDetails' variable
     - Details card access those details and displays them on page + image call 
-        --> CharCard: fetch for character's 'homeworld'
+        --> In CharCard: another fetch for character's 'homeworld'
     - 'Star Wars' logo = back button. 
-    - <3 Button adds card to favourites list -> dropdown appears on click
+    - <3 Button adds card to favourites list -> dropdown appears on click, can delete items
 
     TODO: 
-    x Finish character detail card (everything displays correctly)
-    X Now character cards are all good, do the same for the vehicle and planet cards
-    - Favourites button + Favourites list 
-    X Styling (all black, cards glow on hover) 
     - Inside navbar: menu w/links to titles -> scrolls down on click 
 
     EXTRA:
-    - Extra text for detailed page (Wikipedia entry?)
     - Hyperspace video on page load (how?)
     - Music plays while viewing page --> music player (auto, can stop it)
 

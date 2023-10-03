@@ -28,7 +28,7 @@ export const VehicleDetailCard = () => {
                     <p className='details__text'>Passengers: {store.moreDetails.passengers}</p>
                     <p className='details__text'>Cargo Capacity: {store.moreDetails.cargo_capacity}</p>
                     <p className='details__text'>Consumables: {store.moreDetails.consumables}</p>
-                    <p className='details__text'>Length: {store.moreDetails.terrain}</p>
+                    <p className='details__text'>Manufacturer: {store.moreDetails.manufacturer}</p>
                     <p className='details__text'>Max Atmosphering Speed: {store.moreDetails.max_atmosphering_speed}</p>
                 </div>
             }

@@ -2,35 +2,43 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import logo from "../../img/star_wars_logo.png"
+import { Delete } from "./delete";
 import "../../styles/index.css";
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+
 
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
-	const [favorites, setFavorites] = useState(false);
+	const [toggle, setToggle] = useState(false);
+	const [counter, setCounter] = useState(0);
 
 	useEffect(() => {
-		setFavorites(true);
+		setToggle(true);
 	}, [store.favorites]);
 
+	const deleteItem = (index) => {                       
+        const updatedFavorites = [...store.favorites];            
+        updatedFavorites.splice(index, 1);                 
+        actions.updateFavs(updatedFavorites);                    
+    }
+
+	
 	return (
 		<nav className="navBar">
 			<div className="navBar__container">
 				<Link className="navBar__img" to="/" >
 					<img src={logo} alt="Star Wars Logo" className="navbar__logo" />
 				</Link>
-				<div className="navBar__favList">
-					<p className="navBar__favListText">
-						❤️ 0 ⏷
+				<div className="navBar__favListPill">
+					<p className="navBar__favListPillText" onClick={() => setToggle(!toggle)}>
+						❤️ {store.favorites.length} ⏷
 					</p>
-					{favorites == false
+					{toggle == false
 						? null
-						: <ul className="navBar__favListContainer">
+						: <ul className="navBar__favUL">
 							{store.favorites.map((value, index) => (
-								<li className="navBar__favListItem" key={index}>
-									{value} <span>⊗</span>
+								<li className="navBar__favULItem" key={index}>
+									<Delete onDelete={() => deleteItem(index)}/> {value} 
 								</li>
 							))
 							}
@@ -44,7 +52,6 @@ export const Navbar = () => {
 					<a to="#planets"><span className="navBar__pageLinks">Planets</span></a>
 				</div>
 			</div>
-
 		</nav>
 	);
 };
@@ -70,6 +77,9 @@ export const Navbar = () => {
 				</div> */}
 
 // BOOTSTRAP 
+
+// import Dropdown from 'react-bootstrap/Dropdown';
+// import DropdownButton from 'react-bootstrap/DropdownButton';
 
 {/* <Dropdown>
 	<Dropdown.Toggle id="dropdown-basic" className="navBar__favList">
