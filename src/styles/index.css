@@ -217,6 +217,9 @@ html, body {
     font-family: var(--roboto);
     display: flex;
     padding: 4px 6px;
+    background: white;
+    border-radius: 6px;
+
 }
 
 /* DELETE BUTTON */
@@ -451,7 +454,7 @@ label:hover {
         padding: 10px 10px;
     }
 
-    .navBar__favList p {
+    .navBar__favListPillText {
         font-size: 1.5rem;
     }
 
@@ -482,28 +485,28 @@ label:hover {
 
 @media (min-width: 1200px) {
 
-    .navBar__favListText, .navBar__favListItem {
+    .navBar__favListPillText, .navBar__favULItem {
         margin-left: -2vw;
     }
 }
 
 @media (min-width: 1350px) {
 
-    .navBar__favListText, .navBar__favListItem {
+    .navBar__favListPillText, .navBar__favULItem {
         margin-left: -3vw;
     }
 }
 
 @media (min-width: 1550px) {
 
-    .navBar__favListText, .navBar__favListItem {
+    .navBar__favListPillText, .navBar__favULItem {
         margin-left: -4vw;
     }
 }
 
 @media (min-width: 1650px) {
 
-    .navBar__favListText, .navBar__favListItem {
+    .navBar__favListPillText, .navBar__favULItem {
         margin-left: -5vw;
     }
 }
