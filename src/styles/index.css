@@ -437,7 +437,7 @@ label:hover {
 .details__description {
     color: white;
     margin-top: 30px;
-    width: max(200px, 50%);
+    width: max(260px, 50%);
     text-align: center;
     margin-inline: auto;
     font-size: 1.4rem;

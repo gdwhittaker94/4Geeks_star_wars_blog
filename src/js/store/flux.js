@@ -36,15 +36,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			addToFavs: (name) => {
 				const store = getStore();
+				const favList = store.favorites
 
-				if(store.favorites == "") {
+				if(favList == "") {
 					let newArray = new Array(name);
 					setStore({favorites: newArray});
-					console.log("newArray:", store.favorites)
+					console.log("newArray:", favList)
 				} else {
-					let updatedFavorites = [...store.favorites, name];
+					// avoid repeated fav list item 
+					if(favList.includes(name)) return
+					// otherwise
+					let updatedFavorites = [...favList, name];
 					setStore({favorites: updatedFavorites})
-					console.log("after new array:", store.favorites)
+					console.log("after new array:", favList)
 				}
 			},
 			updateFavs: (updatedFavArray) => {
