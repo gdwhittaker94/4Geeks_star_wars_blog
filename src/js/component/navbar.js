@@ -5,8 +5,6 @@ import logo from "../../img/star_wars_logo.png"
 import { Delete } from "./delete";
 import "../../styles/index.css";
 
-
-
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 	const [toggle, setToggle] = useState(false);
@@ -22,7 +20,6 @@ export const Navbar = () => {
         actions.updateFavs(updatedFavorites);                    
     }
 
-	
 	return (
 		<nav className="navBar">
 			<div className="navBar__container">
@@ -47,9 +44,9 @@ export const Navbar = () => {
 				</div>
 				<div className="navBar__pageLinksContainer">
 					{/* How to link these spans to sections of the page? */}
-					<a to="#characters"><span className="navBar__pageLinks">Characters</span></a>
-					<a to="#vehicles"><span className="navBar__pageLinks">Vehicles</span></a>
-					<a to="#planets"><span className="navBar__pageLinks">Planets</span></a>
+					<a href="#characters"><span className="navBar__pageLinks">Characters</span></a>
+					<a href="#vehicles"><span className="navBar__pageLinks">Vehicles</span></a>
+					<a href="#planets"><span className="navBar__pageLinks">Planets</span></a>
 				</div>
 			</div>
 		</nav>

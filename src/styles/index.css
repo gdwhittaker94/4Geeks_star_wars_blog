@@ -71,6 +71,7 @@ appearance: button;
 html, body {
     height: 100vh;
     background: url(http://www.script-tutorials.com/demos/360/images/stars.png) top center #000;
+    scroll-behavior: smooth;
 }
 
 :root {
