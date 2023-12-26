@@ -2,7 +2,7 @@
 
 This React Star Wars was designed to make us practice everything we had learned so far in the frontend part of the course: Javascript and code that follows programmatic logic, React (combining components, using hooks, using flux in order to have global state and actions), interacting and calling upon APIs for our website's data, and CSS in order to make our pretend blog page look good. 
 
-You can see an example of this blog below. 
+The project can be seen below or at the [live version here](https://4-geeks-stars-wars-blog.vercel.app/)
 
 ![star_wars_blog](https://github.com/4GeeksAcademy/stars_wars_GDW/assets/105855731/d2f2ce02-05fc-4d80-bba4-07809182e026)
 
